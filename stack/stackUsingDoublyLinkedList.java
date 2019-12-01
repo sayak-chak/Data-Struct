@@ -10,7 +10,7 @@ class EmptyStack extends Exception
 class Stack<T>
 {
     /**
-     * Implementing a stack using a dounly linked list
+     * Implementing a stack using a doubly linked list
      */
     private T head;
     private LinkedList<T> stack; //not List as addFirst()/addLast()/removeFirst()/removeLast() methods are exclusive to LinkedList
