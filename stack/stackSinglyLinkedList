@@ -1,1 +1,98 @@
 
+import java.io.*;
+class Stack<Type>
+{
+    /**
+     * Implements a stack using singly linked list. Doesn't make use of the Collection framework LinedList (it's a doubly linked list).
+     * In a stack, elements are added/removed from the top (head of linked list).
+     * ----------------------------------------------------------------------------
+     * ----------------------------------------------------------------------------
+     * [                  ] enquque(a)
+     * [           a(head)] enqueue(x)
+     * [      x(head) -> a] enqueue(c)
+     * [c(head) -> x -> a ] dequeue()
+     * [      x(head) -> a]
+     * -----------------------------------------------------------------------------
+     * 1. Node top, int size
+     * 2. Stack(), Stack(Type firstEle)
+     * 3. boolean (isEmpty)
+     * 4. void push(Type element)
+     * 5. Type pop()
+     * 6. Type peek()
+     */
+    class Node<Type>
+    {
+        private Type data;
+        Node next;
+        Node(Type data, Node next)
+        {
+            this.data = data; this.next = next;
+        }
+    }
+    Node top;
+    int size;
+    Stack()
+    {
+        top = null;
+        size = 0; 
+    }        
+    Stack(Type firstEle)
+    {
+        top = new Node(firstEle, null);
+        size = 1;
+    }
+    public boolean isEmpty()
+    {
+        return size == 0;
+    }
+    public void push(Type ele)
+    {
+        if(isEmpty()) top = new Node(ele,null);
+        else top = new Node(ele, top);
+        size++;
+    }
+    public Type pop() throws Exception
+    {
+        if(isEmpty()) throw new Exception("Empty stack can't pop");
+        Node temp = top;
+        top = top.next;
+        temp.next = null;
+        size -= 1;
+        return (Type)temp.data;
+    }
+    public Type peek() throws Exception
+    {
+        if(isEmpty()) throw new Exception("Empty stack, can't peek");
+        return (Type)top.data;
+    }
+    @Override
+    public String toString()
+    {
+        StringBuilder out = new StringBuilder("[ (top) ");
+        Node trav = top;
+        while(trav!=null)
+        {
+            out.append(trav.data+" -> ");
+            trav = trav.next;
+        }
+        return out.append("]").toString();
+    }
+}
+class Driver
+{
+    public static void main(String[] args) throws Exception 
+    {
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        Stack<String> stack = new Stack<String>();
+        System.out.println(stack.isEmpty());
+        System.out.println(" 6 inputs");
+        for(int i=0;i<6;i++) { stack.push(in.readLine()); System.out.println(stack.toString());}
+        System.out.println(stack.toString());
+        System.out.println(stack.isEmpty());
+        System.out.println("Dequeing till error");
+        for(int i=0;i<7;i++)
+        {
+            stack.pop(); System.out.println(stack.toString());
+        }
+    }
+}
