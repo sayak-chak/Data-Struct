@@ -5,7 +5,7 @@ class MinHeap
     /**
      * Implementing a simple binary minheap (array based). Not using geenrics to keep it short and quick, can be extended easily with generics
      * So, Min-heap property: arr[parent] <= arr[left] && arr[parent]<= arr[right]
-     * => parent <= its children
+     * parent <= its children
      * -----------------------------------------------------------------------------------------------------------------------
      * 1. int arr[] = the array to be converted to heap
      * 2. int capacity = initial size of the array
