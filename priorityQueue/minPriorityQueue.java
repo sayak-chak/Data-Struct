@@ -53,6 +53,7 @@ class MinPQ<Type>
     }
     public int compareTo(Type ele1, Type ele2)
     {
+        //return -(Integer.parseInt(ele1.toString()) - Integer.parseInt(ele2.toString())); //<---converts it to MaxPQ
         return Integer.parseInt(ele1.toString()) - Integer.parseInt(ele2.toString());
     }
     public boolean isEmpty()
