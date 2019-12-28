@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.io.*;
 class UnionFind<Type>
 {
-    private Map<Type, Integer> index;
     private ArrayList <Node> indexArr;
     private int noOfGroups, capacity, size;
     private class Node 
@@ -21,13 +20,11 @@ class UnionFind<Type>
     {
         capacity = CAPACITY; size = 0; noOfGroups = 0;
         indexArr = new ArrayList<>(capacity);
-        index = new HashMap<>();
     }
     public void add(Type element)
     {
         if(size==capacity) throw new OutOfMemoryError("Union find can't accomodate new ele");
         indexArr.add(new Node(size,size,element)); //initially every element is its own root
-        index.put(element, size);
         size++;
         noOfGroups++;
     }
